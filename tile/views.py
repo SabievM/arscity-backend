@@ -5,7 +5,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Tile, Slider, Grout, Category, Material, Purpose, Color, Country, Collection, Room, Form, Size, Surface, Style, Pattern, Feature
 from .serializers import TileSerializer, SliderSerializer, GroutSerializer, CollectionListSerializer, CollectionDetailGroupedSerializer
-from .filters import TileFilter, CollectionFilter
+from .filters import TileFilter, CollectionFilter, GroutFilter
 
 class TilePagination(PageNumberPagination):
     page_size = 20
@@ -62,4 +62,6 @@ class SliderViewSet(viewsets.ReadOnlyModelViewSet):
 class GroutViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Grout.objects.all()
     serializer_class = GroutSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = GroutFilter
 
