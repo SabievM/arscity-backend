@@ -1,7 +1,6 @@
 import django_filters
-from .models import Tile, Material, Country, Purpose, Color, Surface, Form, Room, Collection, Pattern, Size, Style, Feature
-
-import django_filters
+from .models import Tile, Grout, Country, Purpose, Color, Surface, Form, Room, Collection, Pattern, Size, Style, Feature
+from django_filters.filters import BaseInFilter, CharFilter
 from django_filters import rest_framework as filters
 
 
@@ -43,3 +42,27 @@ class CollectionFilter(django_filters.FilterSet):
     class Meta:
         model = Collection
         fields = ['popularity_score']
+
+
+
+
+class CharInFilter(BaseInFilter, CharFilter):
+    pass
+
+
+class GroutFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(lookup_expr='icontains')
+    color = django_filters.CharFilter(lookup_expr='icontains')
+    type = CharInFilter(field_name='type', lookup_expr='in')
+    price_min = django_filters.NumberFilter(field_name='price', lookup_expr='gte')
+    price_max = django_filters.NumberFilter(field_name='price', lookup_expr='lte')
+
+    class Meta:
+        model = Grout
+        fields = [
+            'name', 
+            'color', 
+            'type',
+            'price_min',
+            'price_max',
+        ]

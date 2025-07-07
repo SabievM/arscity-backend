@@ -7,6 +7,7 @@ from .models import Laminate, Underlay, SkirtingBoard, Grade, Thickness, Chamfer
 from tile.models import Category, Country
 from .serializers import LaminateSerializer, UnderlaySerializer, SkirtingBoardSerializer
 from .filters import LaminateFilter, UnderlayFilter, SkirtingBoardFilter
+from django.contrib.contenttypes.models import ContentType
 
 class LaminatePagination(PageNumberPagination):
     page_size = 20
@@ -78,11 +79,22 @@ class LaminateViewSet(viewsets.ModelViewSet):
         }
         return Response(data)
 
+
+
 class UnderlayViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Underlay.objects.all()
     serializer_class = UnderlaySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = UnderlayFilter
+
+    @action(detail=False, methods=["get"], url_path="content_type")
+    def get_content_type(self, request):
+        ct = ContentType.objects.get_for_model(Underlay)
+        return Response({
+            "app_label": ct.app_label,
+            "model": ct.model,
+            "id": ct.id,
+        })
 
 
 class SkirtingBoardViewSet(viewsets.ReadOnlyModelViewSet):
@@ -90,3 +102,12 @@ class SkirtingBoardViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = SkirtingBoardSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = SkirtingBoardFilter
+
+    @action(detail=False, methods=["get"], url_path="content_type")
+    def get_content_type(self, request):
+        ct = ContentType.objects.get_for_model(SkirtingBoard)
+        return Response({
+            "app_label": ct.app_label,
+            "model": ct.model,
+            "id": ct.id,
+        })
