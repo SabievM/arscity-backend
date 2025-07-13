@@ -64,6 +64,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = ['*']
 
+CSRF_TRUSTED_ORIGINS = ['*']
+
 # Off on production
 CORS_ALLOW_ALL_ORIGINS = True
 
