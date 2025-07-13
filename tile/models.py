@@ -179,7 +179,7 @@ class Tile(models.Model):
     features = models.ManyToManyField(Feature, verbose_name="Особенности")
     country = models.ForeignKey(Country, on_delete=models.SET_NULL, null=True, verbose_name="Страна производитель")
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name='tiles', null=True, verbose_name="Коллекция")
-    tile_type = models.CharField(max_length=10, choices=TILE_TYPES, default='base')
+    tile_type = models.CharField(max_length=10, choices=TILE_TYPES, default='base', verbose_name='тип плитки')
     popularity_score = models.IntegerField("Популярность от 1 до 10", default=1)
     
 
