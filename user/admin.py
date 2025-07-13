@@ -16,4 +16,4 @@ from django.contrib import admin
 admin.site.site_header = "Админ панель сайта ars-city.ru"
 admin.site.site_title = "Название вкладки браузера" 
 admin.site.index_title = "Добро пожаловать в админку" 
-admin.site.site_url = "http://localhost:3000"
+admin.site.site_url = "https://ars-city.ru"
