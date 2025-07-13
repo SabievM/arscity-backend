@@ -64,6 +64,10 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = ['*']
 
+# Off on production
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'arscityapi.urls'
 
