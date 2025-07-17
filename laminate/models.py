@@ -154,7 +154,7 @@ class Laminate(models.Model):
     construction = models.ForeignKey(Construction, on_delete=models.SET_NULL, null=True, verbose_name="Конструкция")
     connection_type = models.ForeignKey(ConnectionType, on_delete=models.SET_NULL, null=True, verbose_name="Тип соединения")
     is_promo = models.BooleanField("Акция", default=False)
-    type = models.CharField(default="laminate")
+    type = models.CharField(default="laminate", max_length=255)
 
     class Meta:
         verbose_name = 'Ламинат'
@@ -184,7 +184,7 @@ class Underlay(models.Model):
     image3 = models.ImageField(upload_to='underlay/', blank=True, null=True, verbose_name="Изображение 3")
     image4 = models.ImageField(upload_to='underlay/', blank=True, null=True, verbose_name="Изображение 4")
     image5 = models.ImageField(upload_to='underlay/', blank=True, null=True, verbose_name="Изображение 5")
-    type = models.CharField(default="underlay")
+    type = models.CharField(default="underlay", max_length=255)
     
 
     class Meta:
@@ -226,7 +226,7 @@ class SkirtingBoard(models.Model):
     image3= models.ImageField(upload_to='skirtingBoard/', blank=True, null=True, verbose_name="Изображение 3")
     image4 = models.ImageField(upload_to='skirtingBoard/', blank=True, null=True, verbose_name="Изображение 4")
     image5 = models.ImageField(upload_to='skirtingBoard/', blank=True, null=True, verbose_name="Изображение 5")
-    type = models.CharField(default="skirtingboard")
+    type = models.CharField(default="skirtingboard", max_length=255)
 
     class Meta:
         verbose_name = 'Плинтус'

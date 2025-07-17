@@ -181,7 +181,7 @@ class Tile(models.Model):
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, related_name='tiles', null=True, verbose_name="Коллекция")
     tile_type = models.CharField(max_length=10, choices=TILE_TYPES, default='base', verbose_name='тип плитки')
     popularity_score = models.IntegerField("Популярность от 1 до 10", default=1)
-    type = models.CharField(default="tile")
+    type = models.CharField(default="tile", max_length=255)
     
 
     class Meta:
@@ -222,7 +222,7 @@ class Grout(models.Model):
     image3 = models.ImageField("Фотография 3", blank=True, null=True, upload_to='grouts/')
     image4 = models.ImageField("Фотография 4", blank=True, null=True, upload_to='grouts/')
     image5 = models.ImageField("Фотография 5", blank=True, null=True, upload_to='grouts/')
-    type = models.CharField(default="grout")
+    type = models.CharField(default="grout", max_length=255)
 
     class Meta:
         verbose_name = 'Замазка'
