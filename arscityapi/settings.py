@@ -24,10 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wj!7lqm%3#7!3+uvl(#9ijlgx4p8r5)t&ji!)7u4&2!b$rnp0k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DEBUG = False
 
 # Application definition
 
@@ -62,10 +59,17 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+ALLOWED_HOSTS = ["ars-city.ru"]
 
+CSRF_TRUSTED_ORIGINS = ["https://ars-city.ru"]
+
+CSRF_ALLOWED_ORIGINS = ["https://ars-city.ru"]
+
+CORS_ALLOWED_ORIGINS = ["https://ars-city.ru"]
+
+CORS_ORIGINS_WHITELIST = ["https://ars-city.ru"]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'arscityapi.urls'
 
@@ -133,6 +137,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
