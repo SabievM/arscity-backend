@@ -29,7 +29,8 @@ urlpatterns = [
     path('api/laminate/', include('laminate.urls')),
     path('api/workexample/', include('workexample.urls')),
     path('api/', include('search.urls')),
-    path('api/', include('advice.urls'))
+    path('api/', include('advice.urls')),
+    path('api/', include('files.urls'))
 ]
 
 
