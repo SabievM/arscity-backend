@@ -43,6 +43,7 @@ class Collection(models.Model):
     image4 = models.ImageField('Изображение4', upload_to='collections/', blank=True, null=True)
     image5 = models.ImageField('Изображение5', upload_to='collections/', blank=True, null=True)
     logo = models.ImageField('Логотип', upload_to='collections/logo/', blank=True, null=True)
+    type= models.CharField(max_length=255, default="collection")
 
     class Meta:
         verbose_name = 'Коллекция'
