@@ -44,6 +44,7 @@ class Collection(models.Model):
     image5 = models.ImageField('Изображение5', upload_to='collections/', blank=True, null=True)
     logo = models.ImageField('Логотип', upload_to='collections/logo/', blank=True, null=True)
     type= models.CharField(max_length=255, default="collection")
+    is_new = models.BooleanField("Новинка", default=True)
 
     class Meta:
         verbose_name = 'Коллекция'
