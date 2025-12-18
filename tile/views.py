@@ -3,8 +3,8 @@ from rest_framework import viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from .models import Tile, Slider, Grout, Category, Material, Purpose, Color, Country, Collection, Room, Form, Size, Surface, Style, Pattern, Feature
-from .serializers import TileSerializer, SliderSerializer, GroutSerializer, CollectionListSerializer, CollectionDetailGroupedSerializer
+from .models import Tile, Slider, Grout, Category, Material, Purpose, Color, Country, Collection, Room, Form, Size, Surface, Style, Pattern, Feature, ImageGalary
+from .serializers import TileSerializer, SliderSerializer, GroutSerializer, CollectionListSerializer, CollectionDetailGroupedSerializer, ImageGalarySerializer
 from .filters import TileFilter, CollectionFilter, GroutFilter
 
 class TilePagination(PageNumberPagination):
@@ -65,3 +65,8 @@ class GroutViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_class = GroutFilter
 
+
+class ImageGalaryViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = ImageGalary.objects.all()
+    serializer_class = ImageGalarySerializer
+    

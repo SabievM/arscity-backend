@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Tile, Material, Country, Category, Purpose, Color, Surface, Form,
-    Room, Collection, Pattern, Size, Style, Feature, Slider, Grout
+    Room, Collection, Pattern, Size, Style, Feature, Slider, Grout, ImageGalary
 )
 
 @admin.register(Tile)
@@ -46,3 +46,4 @@ admin.site.register(Size)
 admin.site.register(Style)
 admin.site.register(Feature)
 admin.site.register(Category)
+admin.site.register(ImageGalary)

@@ -232,3 +232,15 @@ class Grout(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.color})"
+    
+
+class ImageGalary(models.Model):
+    name = models.CharField("Название", max_length=250)
+    image = models.ImageField("Изображение", blank=True, null=True, upload_to="galary/")
+
+    class Meta:
+        verbose_name = "Галерея"
+        verbose_name_plural = "Галерея"
+
+    def __str__(self):
+        return f"Вотография {self.name}"

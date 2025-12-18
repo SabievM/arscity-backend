@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import (
     Tile, Material, Country, Purpose, Color, Surface, Form,
-    Room, Collection, Pattern, Size, Style, Feature, Slider, Grout
+    Room, Collection, Pattern, Size, Style, Feature, Slider, Grout, ImageGalary
 )
 
 class MaterialSerializer(serializers.ModelSerializer):
@@ -67,7 +67,6 @@ class CollectionSimpleSerializer(serializers.ModelSerializer):
         model = Collection
         fields = ['id', 'name', 'logo']
 
-
 class PatternSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pattern
@@ -120,3 +119,8 @@ class GroutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grout
         fields = '__all__'
+
+class ImageGalarySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ImageGalary
+        fields = ["id", "name", "image"]
