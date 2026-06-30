@@ -1,0 +1,16 @@
+<h2>Новинки ARS City</h2>
+
+{% for p in products %}
+<div>
+    <img
+        src="{{ p.image }}"
+        width="250"
+    />
+
+    <h3>{{ p.name }}</h3>
+    <p>Цена: {{ p.price }} ₽</p>
+</div>
+<button style="padding: 16px; background-color: rgb(200, 0, 0); color: white">
+    <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
+</button>
+{% endfor %}

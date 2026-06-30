@@ -1,0 +1,21 @@
+<h2>Акции и скидки</h2>
+
+{% for p in products %}
+<div style="border: 2px solid red; padding: 10px">
+    <img
+        src="{{ p.image }}"
+        width="250"
+    />
+
+    <h3>{{ p.name }}</h3>
+    <p><b>Цена по акции: {{ p.price }} ₽</b></p>
+    <a
+        href="https://grandfayans.ru/catalog/mebel-po-kollektsiyam/80-zerkalo-shkaf-paola-80_1/
+"
+        >Перейти на страницу товара</a
+    >
+</div>
+<p>
+    <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
+</p>
+{% endfor %}

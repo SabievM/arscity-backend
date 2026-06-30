@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from tile.models import Tile, Grout, Country
 from laminate.models import Laminate, Underlay, SkirtingBoard
+from sanitaryequipment.models import ShowerAssembly
 
 # Сериализатор для плитки (Tile)
 class SimpleTileSerializer(serializers.ModelSerializer):
@@ -39,3 +40,8 @@ class SimpleGroutSerializer(serializers.ModelSerializer):
     class Meta:
         model = Grout
         fields = ['id', 'name', 'color', 'price', 'image1']
+
+class SimpleShowerAssemblySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ShowerAssembly
+        fields = ['id', 'name',  'price', 'image1'] 

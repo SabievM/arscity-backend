@@ -36,6 +36,7 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=255, unique=True)
+    receive_newsletters = models.BooleanField(default=True, verbose_name="Получать рассылки")
 
     objects = UserManager()
 

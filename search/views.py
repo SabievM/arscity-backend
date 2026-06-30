@@ -4,12 +4,14 @@ from django.db.models import Q
 
 from tile.models import Tile, Grout
 from laminate.models import Laminate, Underlay, SkirtingBoard
+from sanitaryequipment.models import ShowerAssembly
 from .serializers import (
     SimpleTileSerializer,
     SimpleLaminateSerializer,
     SimpleUnderlaySerializer,
     SimpleSkirtingBoardSerializer,
-    SimpleGroutSerializer
+    SimpleGroutSerializer,
+    SimpleShowerAssemblySerializer
 )
 
 
@@ -42,6 +44,15 @@ class GlobalSearchView(APIView):
             grouts = Grout.objects.filter(Q(name__icontains=query) | Q(color__icontains=query))
             results.extend([
                 {"type": "grout", **item} for item in SimpleGroutSerializer(grouts, many=True).data
+            ])
+            shower_assemblies = ShowerAssembly.objects.filter(
+                Q(name__icontains=query) |
+                Q(article__icontains=query) |
+                Q(brand__icontains=query) |
+                Q(category__icontains=query)
+            )
+            results.extend([
+                {"type": "showerassembly", **item} for item in SimpleShowerAssemblySerializer(shower_assemblies, many=True).data
             ])
 
         return Response(results)

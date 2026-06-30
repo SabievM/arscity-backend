@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+    <body>
+        <h1>Новинки ARS City</h1>
+
+        {% for product in products %}
+
+        <div style="margin-bottom: 30px">
+            <img
+                src="{{ product.image }}"
+                width="300"
+            />
+
+            <h2>{{ product.name }}</h2>
+
+            <p>Цена: {{ product.price }} ₽</p>
+        </div>
+
+        {% endfor %}
+
+        <p>
+            <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
+        </p>
+    </body>
+</html>

@@ -30,7 +30,9 @@ urlpatterns = [
     path('api/workexample/', include('workexample.urls')),
     path('api/', include('search.urls')),
     path('api/', include('advice.urls')),
-    path('api/', include('files.urls'))
+    path('api/', include('files.urls')),
+    path("api/newsletter/", include("newsletter.urls")),
+    path('api/', include('sanitaryequipment.urls'))
 ]
 
 

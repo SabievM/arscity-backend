@@ -1,0 +1,15 @@
+<h2>Подборка товаров</h2>
+
+{% for p in products %}
+<div>
+    <img
+        src="{{ p.image }}"
+        width="250"
+    />
+    <h3>{{ p.name }}</h3>
+    <p>{{ p.price }} ₽</p>
+</div>
+<p>
+    <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
+</p>
+{% endfor %}

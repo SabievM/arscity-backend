@@ -3,6 +3,23 @@ from .models import (
     Tile, Material, Country, Category, Purpose, Color, Surface, Form,
     Room, Collection, Pattern, Size, Style, Feature, Slider, Grout, ImageGalary
 )
+from newsletter.admin_actions import send_newsletter_action
+
+def send_new(modeladmin, request, queryset):
+    return send_newsletter_action(modeladmin, request, queryset, mail_type="new")
+send_new.short_description = "🆕 Отправить новинки"
+
+
+def send_sale(modeladmin, request, queryset):
+    return send_newsletter_action(modeladmin, request, queryset, mail_type="sale")
+send_sale.short_description = "🔥 Отправить акции"
+
+
+def send_collection(modeladmin, request, queryset, mail_type="collection"):
+    return send_newsletter_action(modeladmin, request, queryset, mail_type="collection")
+send_collection.short_description = "📦 Отправить подборку"
+
+
 
 @admin.register(Tile)
 class TileAdmin(admin.ModelAdmin):
@@ -17,6 +34,9 @@ class TileAdmin(admin.ModelAdmin):
         'size', 'style', 'features', 'is_large_format'
     )
     filter_horizontal = ('purpose', 'features',)
+    actions = [send_new, send_sale, send_collection]
+    
+
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
