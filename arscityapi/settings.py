@@ -12,7 +12,40 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
+
+if ENVIRONMENT == "production":
+    ALLOWED_HOSTS = [
+        "ars-city.ru",
+        "www.ars-city.ru",
+        "api.ars-city.ru",
+    ]
+
+    CSRF_TRUSTED_ORIGINS = [
+        "https://ars-city.ru",
+        "https://www.ars-city.ru",
+        "https://api.ars-city.ru",
+    ]
+
+    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+else:
+    ALLOWED_HOSTS = [
+        "localhost",
+        "127.0.0.1",
+    ]
+
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+    ]
+
+    CSRF_COOKIE_SECURE = False
+    SESSION_COOKIE_SECURE = False
 
 # === APPS ===
 INSTALLED_APPS = [
