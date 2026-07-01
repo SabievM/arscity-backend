@@ -10,9 +10,6 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-
-
-
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
 
 if ENVIRONMENT == "production":
