@@ -15,7 +15,19 @@
         >Перейти на страницу товара</a
     >
 </div>
-<p>
-    <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
-</p>
+<div style="margin-top: 20px; margin-bottom: 20px">
+    <a
+        style="
+            padding: 16px;
+            background-color: rgb(231, 54, 54);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        "
+        href="{{ unsubscribe_url }}"
+    >
+        Отписаться от рассылки
+    </a>
+</div>
+
 {% endfor %}

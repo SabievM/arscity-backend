@@ -27,9 +27,7 @@ def send_newsletter_action(modeladmin, request, queryset, mail_type):
             "type": type,
             "id": id
         })
-    print(f"http://172.18.0.1:3000/product/{type}/{id}")
     send_products_email(products, mail_type=mail_type)
-
     modeladmin.message_user(
         request,
         f"Рассылка '{mail_type}' отправлена ({len(products)} товаров)"

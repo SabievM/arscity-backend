@@ -10,12 +10,13 @@ load_dotenv()
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = False
+
 
 
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "development")
 
 if ENVIRONMENT == "production":
+    DEBUG = False
     ALLOWED_HOSTS = [
         "ars-city.ru",
         "www.ars-city.ru",
@@ -32,10 +33,8 @@ if ENVIRONMENT == "production":
     SESSION_COOKIE_SECURE = True
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 else:
-    ALLOWED_HOSTS = [
-        "localhost",
-        "127.0.0.1",
-    ]
+    DEBUG = True
+    ALLOWED_HOSTS = ["*"]
 
     CSRF_TRUSTED_ORIGINS = [
         "http://localhost:3000",
@@ -169,5 +168,4 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-
 

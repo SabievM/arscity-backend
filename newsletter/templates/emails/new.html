@@ -10,7 +10,18 @@
     <h3>{{ p.name }}</h3>
     <p>Цена: {{ p.price }} ₽</p>
 </div>
-<button style="padding: 16px; background-color: rgb(200, 0, 0); color: white">
-    <a href="{{ unsubscribe_url }}"> Отписаться от рассылки </a>
-</button>
+<div style="margin-top: 20px; margin-bottom: 20px">
+    <a
+        style="
+            padding: 16px;
+            background-color: rgb(231, 54, 54);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        "
+        href="{{ unsubscribe_url }}"
+    >
+        Отписаться от рассылки
+    </a>
+</div>
 {% endfor %}
